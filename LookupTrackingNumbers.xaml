@@ -1,0 +1,321 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="LookupTrackingNumbers" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:sc="clr-namespace:System.Collections;assembly=System.Private.CoreLib" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:str="clr-namespace:System.Text.RegularExpressions;assembly=System.Text.RegularExpressions" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uix="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="doGenerateInvoice" Type="OutArgument(x:Boolean)" />
+    <x:Property Name="itemsString" Type="InArgument(x:String)" />
+  </x:Members>
+  <sap2010:ExpressionActivityEditor.ExpressionActivityEditor>C#</sap2010:ExpressionActivityEditor.ExpressionActivityEditor>
+  <sap:VirtualizedContainerService.HintSize>796,2712</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <scg:List x:TypeArguments="x:String" Capacity="33">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Text</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>System.Text.RegularExpressions</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq.Expressions</x:String>
+      <x:String>UiPath.UIAutomationNext.Enums</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>UiPath.UIAutomationCore.Contracts</x:String>
+      <x:String>UiPath.UIAutomationNext.Activities</x:String>
+      <x:String>UiPath.Platform.ObjectLibrary</x:String>
+      <x:String>UiPath.Shared.Activities</x:String>
+      <x:String>System.Security</x:String>
+      <x:String>System.ComponentModel</x:String>
+    </scg:List>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="53">
+      <AssemblyReference>Microsoft.CSharp</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.ServiceModel.Activities</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>System.Private.CoreLib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>System.ObjectModel</AssemblyReference>
+      <AssemblyReference>System.Reflection.DispatchProxy</AssemblyReference>
+      <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
+      <AssemblyReference>NPOI</AssemblyReference>
+      <AssemblyReference>System.Memory.Data</AssemblyReference>
+      <AssemblyReference>System.Console</AssemblyReference>
+      <AssemblyReference>System.Private.Uri</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>System.ComponentModel</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.TypeConverter</AssemblyReference>
+      <AssemblyReference>System.Configuration.ConfigurationManager</AssemblyReference>
+      <AssemblyReference>System.Security.Permissions</AssemblyReference>
+      <AssemblyReference>System.Text.RegularExpressions</AssemblyReference>
+      <AssemblyReference>System.IO.Packaging</AssemblyReference>
+      <AssemblyReference>System.IO.FileSystem.Watcher</AssemblyReference>
+      <AssemblyReference>System.IO.FileSystem.DriveInfo</AssemblyReference>
+      <AssemblyReference>System.IO.FileSystem.AccessControl</AssemblyReference>
+      <AssemblyReference>System.Linq.Expressions</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Platform</AssemblyReference>
+      <AssemblyReference>System.Drawing.Primitives</AssemblyReference>
+      <AssemblyReference>System.Drawing.Common</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Mail.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities</AssemblyReference>
+      <AssemblyReference>System.Private.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.Collections</AssemblyReference>
+      <AssemblyReference>System.Collections.NonGeneric</AssemblyReference>
+      <AssemblyReference>System.Runtime.InteropServices</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Primitives</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.EventBasedAsync</AssemblyReference>
+    </scg:List>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="LookupTrackingNumbers" sap:VirtualizedContainerService.HintSize="635.2,2647.2" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="x:String" Name="itemNamePattern" />
+      <Variable x:TypeArguments="x:String" Name="trackingSiteURL" />
+      <Variable x:TypeArguments="scg:IEnumerable(str:Match)" Name="itemsMatches" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="593.6,52.8" sap2010:WorkflowViewState.IdRef="CommentOut_1">
+      <ui:CommentOut.Body>
+        <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="345.6,245.6" sap2010:WorkflowViewState.IdRef="Sequence_6">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <Sequence DisplayName="Sequence DEBUG" sap:VirtualizedContainerService.HintSize="304,152.8" sap2010:WorkflowViewState.IdRef="Sequence_4">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <Assign sap:VirtualizedContainerService.HintSize="262.4,60" sap2010:WorkflowViewState.IdRef="Assign_4">
+              <Assign.To>
+                <OutArgument x:TypeArguments="x:String">
+                  <CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_5">itemsString</CSharpReference>
+                </OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="x:String">Item Name:Tracking NumberPriceQuantityTotalMoviesTR-10196-100$158.4513$2059.85SportsTR-10196-101$171.3111$1884.41Generate InvoiceClose</InArgument>
+              </Assign.Value>
+            </Assign>
+          </Sequence>
+        </Sequence>
+      </ui:CommentOut.Body>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:CommentOut>
+    <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="593.6,62.4" sap2010:WorkflowViewState.IdRef="WriteLine_1" Text="Lookup Item Numbers" />
+    <Assign DisplayName="Assign tracking website URL" sap:VirtualizedContainerService.HintSize="593.6,60" sap2010:WorkflowViewState.IdRef="Assign_2">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:String">
+          <CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_2">trackingSiteURL</CSharpReference>
+        </OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:String">https://developer.automationanywhere.com/challenges/salesorder-tracking.html</InArgument>
+      </Assign.Value>
+    </Assign>
+    <Assign DisplayName="Assign Item Name Pattern" sap:VirtualizedContainerService.HintSize="593.6,60" sap2010:WorkflowViewState.IdRef="Assign_1">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:String">
+          <CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_1">itemNamePattern</CSharpReference>
+        </OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:String">
+          <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_1">@"TR-\d{5}-\d{3}"</CSharpValue>
+        </InArgument>
+      </Assign.Value>
+    </Assign>
+    <Assign DisplayName="Assign doGenerateInvoice" sap:VirtualizedContainerService.HintSize="593.6,60" sap2010:WorkflowViewState.IdRef="Assign_3">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:Boolean">
+          <CSharpReference x:TypeArguments="x:Boolean" sap2010:WorkflowViewState.IdRef="CSharpReference`1_3">doGenerateInvoice</CSharpReference>
+        </OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:Boolean">True</InArgument>
+      </Assign.Value>
+    </Assign>
+    <ui:Matches DisplayName="Matches Item Tracking Numbers" sap:VirtualizedContainerService.HintSize="593.6,60" sap2010:WorkflowViewState.IdRef="Matches_1" IsBuilderTabModified="False" RegexOption="Compiled">
+      <ui:Matches.Input>
+        <InArgument x:TypeArguments="x:String">
+          <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_2">itemsString</CSharpValue>
+        </InArgument>
+      </ui:Matches.Input>
+      <ui:Matches.Pattern>
+        <InArgument x:TypeArguments="x:String">
+          <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_3">itemNamePattern</CSharpValue>
+        </InArgument>
+      </ui:Matches.Pattern>
+      <ui:Matches.Result>
+        <OutArgument x:TypeArguments="scg:IEnumerable(str:Match)">
+          <CSharpReference x:TypeArguments="scg:IEnumerable(str:Match)" sap2010:WorkflowViewState.IdRef="CSharpReference`1_4">itemsMatches</CSharpReference>
+        </OutArgument>
+      </ui:Matches.Result>
+    </ui:Matches>
+    <uix:NApplicationCard WebDriverMode="{x:Null}" AttachMode="ByInstance" CloseMode="Never" DisplayName="Use Browser Chrome: Sales Order - Tracking" sap:VirtualizedContainerService.HintSize="593.6,1856.8" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InteractionMode="DebuggerApi" ScopeGuid="e7ece480-78ec-4c51-9307-cf0432dab86c" Version="V2">
+      <uix:NApplicationCard.Body>
+        <ActivityAction x:TypeArguments="x:Object">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
+          </ActivityAction.Argument>
+          <ui:ForEach x:TypeArguments="str:Match" CurrentIndex="{x:Null}" DisplayName="For Each Match" sap:VirtualizedContainerService.HintSize="560,1640" sap2010:WorkflowViewState.IdRef="ForEach`1_2">
+            <ui:ForEach.Body>
+              <ActivityAction x:TypeArguments="str:Match">
+                <ActivityAction.Argument>
+                  <DelegateInArgument x:TypeArguments="str:Match" Name="item" />
+                </ActivityAction.Argument>
+                <Sequence DisplayName="Body Find Item Status" sap:VirtualizedContainerService.HintSize="524.8,1513.6" sap2010:WorkflowViewState.IdRef="Sequence_2">
+                  <Sequence.Variables>
+                    <Variable x:TypeArguments="x:String" Name="trackingNumber" />
+                    <Variable x:TypeArguments="x:String" Name="trackingStatus" />
+                  </Sequence.Variables>
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <Assign DisplayName="Assign item tracking number" sap:VirtualizedContainerService.HintSize="483.2,61.6" sap2010:WorkflowViewState.IdRef="Assign_5">
+                    <Assign.To>
+                      <OutArgument x:TypeArguments="x:String">
+                        <CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_6">trackingNumber</CSharpReference>
+                      </OutArgument>
+                    </Assign.To>
+                    <Assign.Value>
+                      <InArgument x:TypeArguments="x:String">
+                        <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_6">item.Groups[0].Captures[0].ToString()</CSharpValue>
+                      </InArgument>
+                    </Assign.Value>
+                  </Assign>
+                  <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="483.2,62.4" sap2010:WorkflowViewState.IdRef="WriteLine_2">
+                    <InArgument x:TypeArguments="x:String">
+                      <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_7">"Looking up " + trackingNumber</CSharpValue>
+                    </InArgument>
+                  </WriteLine>
+                  <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="None" DisplayName="Type Into 'INPUT inputTrackingNo'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="483.2,218.4" sap2010:WorkflowViewState.IdRef="NTypeInto_1" ScopeIdentifier="e7ece480-78ec-4c51-9307-cf0432dab86c" Version="V1">
+                    <uix:NTypeInto.Target>
+                      <uix:TargetAnchorable BrowserURL="https://developer.automationanywhere.com/challenges/salesorder-tracking.html" DesignTimeRectangle="538, 465, 713, 60" ElementType="InputBox" FriendlyName="'INPUT inputTrackingNo'" FullSelectorArgument="&lt;webctrl tag='INPUT' id='inputTrackingNo' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='INPUT' id='inputTrackingNo' type='text' class='form-control form-control-lg' aaname='' /&gt;" Guid="a1ced001-d793-4dda-9585-12c1e1b4145f" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAs0AAABACAYAAADh/kquAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAAITSURBVHhe7duxboNQFETB/P9nmoaaloLoxgpao03cmznSdDzq1RN8HZIkSZL+zWiWJEmS3mQ0S5IkSW+qo3nbtmNd12NZluPxeAAAwMeazTvbdzbwX72M5n3ffw60lwEAwKebLTyb+NrLaDaYAQC4u9nE187RPNfR7RAAANzN9VONczS7ZQYAgKfrbfM5mv30BwAAT7ONs3M0t4cBAOCuMqMZAACKzGgGAIAiM5oBAKDIjGYAACgyoxkAAIrMaAYAgCIzmgEAoMiMZgAAKDKjGQAAisxoBgCAIjOaAQCgyIxmAAAoMqMZAACKzGgGAIAiM5oBAKDIjGYAACgyoxkAAIrMaAYAgCIzmgEAoMiMZgAAKDKjGQAAisxoBgCAIjOaAQCgyIxmAAAoMqMZAACKzGgGAIAiM5oBAKDIjGYAACgyoxkAAIrMaAYAgCIzmgEAoMiMZgAAKDKjGQAAisxoBgCAIjOaAQCgyIxmAAAoMqMZAACKzGgGAIAiM5oBAKDIjGYAACgyoxkAAIrMaAYAgCIzmgEAoMiMZgAAKDKjGQAAisxoBgCAIjOaAQCgyM7RvCxLfRgAAO5mtnF2juZ1XesBAAC4m9nG2Tmat22rBwAA4G5mG2fnaJ7cNgMAcHfXW+bpZTTv+244AwBwW7OFZxNfexnNv8119BzwcyAAAJ9uNu9s3+snGVkdzZIkSZJ+O45vrRGuEANoUwsAAAAASUVORK5CYII=" InformativeScreenshot="e32a46a2c816b1437c3bc36937e69963.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Sales Order - Tracking' /&gt;" SearchSteps="Selector" Visibility="Interactive" />
+                    </uix:NTypeInto.Target>
+                    <uix:NTypeInto.Text>
+                      <InArgument x:TypeArguments="x:String">
+                        <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_9">trackingNumber + "[k(enter)]"</CSharpValue>
+                      </InArgument>
+                    </uix:NTypeInto.Text>
+                  </uix:NTypeInto>
+                  <uix:NClick ClickType="Single" DisplayName="Click 'TRACK'" sap:VirtualizedContainerService.HintSize="483.2,157.6" sap2010:WorkflowViewState.IdRef="NClick_1" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="e7ece480-78ec-4c51-9307-cf0432dab86c" Version="V1">
+                    <uix:NClick.Target>
+                      <uix:TargetAnchorable BrowserURL="https://developer.automationanywhere.com/challenges/salesorder-tracking.html" DesignTimeRectangle="1288, 465, 123, 60" ElementType="Button" FriendlyName="'TRACK'" FullSelectorArgument="&lt;webctrl tag='BUTTON' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='BUTTON' type='button' class='btn btn-info btn-lg' aaname='               TRACK             ' check:text='TRACK' /&gt;" Guid="e21fb2ea-9f62-46ae-b1b3-6d4a00873085" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAH8AAABACAYAAAAzkahrAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAAUoSURBVHhe7Z0/TxtJGMbvW0S6Kl/gSrdX3Tego7yOMh0lHWWqo6S4E9ecInQSOSVgJXJMKIysYGIBskDGMsKYyLL5Zy2y8XszeHb32fHs2gYWtDvvIz1CYt6ZNf7NvPvuDNL+RCxrxfAtFsO3WEb4f5Sr9Ou/m/TzXx/p1Z8f2Am0ZCcZSpZhCsCvXt7cd/jln8/GAdnJs2QpmUq2ugLwZdDrvzeMg7CTa8lUstXlwZfpgVd8ei3Z6rcAD76cGaZO7PRYX/0efC7u0m/JGOXBNwWz02cUw7fMKIZvmVEM3zKjGL5lRjF8y4xi+JYZxfAtM4rhW2YUw7fMKIZvmVEM3zKjGL5lRsUI/4Dyt2rwadWpTzbG4I46N9eU3StRZuT6Jpcp21V9qUf5bVNMuDPrB7TSuKbm7Z0aQ6kvPsdVm7L7e/Sbod+r7RZ1VGjl0NB+b/hbe216u2qKebxRyYYP6jQOxk+Ar+fUVPFSTrNijhtxkZYaXXJUv0j1u5QvF4P9J4A/e+zOyjuqVArGmKcw6gXSPgD1IIc5LHaLZjdLNP/9nGp91S6+tO1SDmJGvdDoDUMHwx9yhS0a4oIu0koHVnrfod2TGi2K6/++XlCf45TyHTW2VO+Clv6DMcbBX63Srvt3XJ3RrN7+hEYlFD740xnVVIiMCV/9FdpWfJqNluojJsyOKdZ1zp8wQp1WjeYi0nHmS5XyN87oJBwD37/G9LeiaY1KPnwB6N2lirlt0YIxRninrdK2/IJL3r3f+XFkjhfOlNw+Ik5c/8ErMgo+TF75WSarXR5uVArgfxBpWcVEwH/7Q6VuFePfAkSK1mKHLviTirq09skUM6FD4Rf8z96/ppUNbIvHqBTAL9DalYpxWjRvjDnyUr4sDO9/B0B29w21wmqdKqqdRLp/1IoMgY+ZpXasFYkxGZV8+FDBh1bvexcqAu+pMLYJbtEHVjuKLiTH2ggfHjujbldPbFRi4WfWv9H8vijc3Cp50KV3xtSco+WWitG+ZEz9y3ohd3g9bBMyFWlTGeCPavxTylMalRz4URo4lN/ZMvQXXq3Rrnq0a56Ug22BFakBeDb4z5fypVHJhy8KpeV1U9+hM/tuynco+1Vvh/EvT2kG2wBY7fiRmy7GtF/0a5XB8xR70qjkpn0olpp1bUV7zvnV9FiJ20YAABR8+sSY1kb4wlivtKqxP+ZJoxJc8E2wcjZO/Q2gCRRc4VArGLPGFA6DH9hEep57PyrB8IXhSzVV+jNVt5yO2jmDa1ydhaZ++Ri5MNFhS5HmvmgQQ+EL49auvAa2xWBUsuHjJsnIRgw8/3fP6U2gX9BvTrx9PMpuYltwe9e5PKP599ge9HB7907UIRe0hBMlCr7w7JF31Bh78YdKOHzhsPvmhr9tOlLl64YxRmOLtNKGg51BjyqNujrY2aKZnOFgR57MHX7zxxgDP/DMH3Pxh0o+fLE6l1ouHD+9z9XDVrPJ/l6/OUts0eLJhEe6vYcd6WJMnMUfKgXwhfFk7/5IFFaSgDln6qPZnywR9cH7vZB/5uhRs9Omte/lR/wzhzaJi/EUf6gXgM9+SaMYvmVGMXzLjGL4lhnF8C0ziuFbZhTDt8wohm+ZUQzfMqMYvmVGMXzLjGL4lhnF8C0ziuFbZhTDt8wohm+ZUQzfMqM8+PyyhfQ79GUL/JqV9Dv0NSv8gqV0O/IFS1JyZvCr1dLnsa9Wk+KXKqbPkqVkOvaliq5kepAduAhMriU7yVBP9SgjfJYNIvofHLijGA2Ee14AAAAASUVORK5CYII=" InformativeScreenshot="79103ff39f7a78ec839a5110c81cb7d5.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Sales Order - Tracking' /&gt;" SearchSteps="Selector" Visibility="Interactive" />
+                    </uix:NClick.Target>
+                  </uix:NClick>
+                  <uix:NGetAttribute Attribute="text" DisplayName="Get Attribute 'Delivered'" sap:VirtualizedContainerService.HintSize="483.2,208" sap2010:WorkflowViewState.IdRef="NGetAttribute_1" ScopeIdentifier="e7ece480-78ec-4c51-9307-cf0432dab86c" Version="V1">
+                    <uix:NGetAttribute.Result>
+                      <OutArgument x:TypeArguments="x:String">
+                        <CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_7">trackingStatus</CSharpReference>
+                      </OutArgument>
+                    </uix:NGetAttribute.Result>
+                    <uix:NGetAttribute.Target>
+                      <uix:TargetAnchorable BrowserURL="https://developer.automationanywhere.com/challenges/salesorder-tracking.html" DesignTimeRectangle="1059, 791, 341, 61" ElementType="Text" FriendlyName="'Delivered'" FullSelectorArgument="&lt;webctrl tag='TABLE' id='shippingTable' /&gt;&lt;webctrl tableCol='2' tableRow='4' tag='TD' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='TABLE' id='shippingTable' /&gt;&lt;webctrl type='' class='' tag='TD' aaname='Delivered' check:text='Delivered' /&gt;" Guid="f8c5e797-0f75-4a34-827d-70ac71ee7b06" ImageBase64="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" InformativeScreenshot="25291046c3f1928eecba6c752830d65f.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Sales Order - Tracking' /&gt;" SearchSteps="Selector" Visibility="Interactive" />
+                    </uix:NGetAttribute.Target>
+                  </uix:NGetAttribute>
+                  <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="483.2,62.4" sap2010:WorkflowViewState.IdRef="WriteLine_4">
+                    <InArgument x:TypeArguments="x:String">
+                      <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_12">"Item delivery status is " + trackingStatus</CSharpValue>
+                    </InArgument>
+                  </WriteLine>
+                  <If DisplayName="If Not Delivered Just End" sap:VirtualizedContainerService.HintSize="483.2,408.8" sap2010:WorkflowViewState.IdRef="If_1">
+                    <If.Condition>
+                      <InArgument x:TypeArguments="x:Boolean">
+                        <CSharpValue x:TypeArguments="x:Boolean" sap2010:WorkflowViewState.IdRef="CSharpValue`1_10">trackingStatus != "Delivered"</CSharpValue>
+                      </InArgument>
+                    </If.Condition>
+                    <If.Then>
+                      <Sequence DisplayName="Sequence End" sap:VirtualizedContainerService.HintSize="304,218.4" sap2010:WorkflowViewState.IdRef="Sequence_5">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <Assign sap:VirtualizedContainerService.HintSize="262.4,61.6" sap2010:WorkflowViewState.IdRef="Assign_6">
+                          <Assign.To>
+                            <OutArgument x:TypeArguments="x:Boolean">
+                              <CSharpReference x:TypeArguments="x:Boolean" sap2010:WorkflowViewState.IdRef="CSharpReference`1_8">doGenerateInvoice</CSharpReference>
+                            </OutArgument>
+                          </Assign.To>
+                          <Assign.Value>
+                            <InArgument x:TypeArguments="x:Boolean">False</InArgument>
+                          </Assign.Value>
+                        </Assign>
+                        <ui:Break sap:VirtualizedContainerService.HintSize="262.4,22.4" sap2010:WorkflowViewState.IdRef="Break_1" />
+                      </Sequence>
+                    </If.Then>
+                  </If>
+                </Sequence>
+              </ActivityAction>
+            </ui:ForEach.Body>
+            <ui:ForEach.Values>
+              <InArgument x:TypeArguments="sc:IEnumerable">
+                <CSharpValue x:TypeArguments="sc:IEnumerable" sap2010:WorkflowViewState.IdRef="CSharpValue`1_4">itemsMatches</CSharpValue>
+              </InArgument>
+            </ui:ForEach.Values>
+          </ui:ForEach>
+        </ActivityAction>
+      </uix:NApplicationCard.Body>
+      <uix:NApplicationCard.TargetApp>
+        <uix:TargetApp Area="-9, -9, 1938, 1048" BrowserType="Chrome" IconBase64="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" InformativeScreenshot="0dce7b25474b9f24de62256fd9ef014f.png" Selector="&lt;html app='chrome.exe' title='Sales Order - Tracking' /&gt;">
+          <uix:TargetApp.Url>
+            <InArgument x:TypeArguments="x:String">
+              <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_8">trackingSiteURL</CSharpValue>
+            </InArgument>
+          </uix:TargetApp.Url>
+        </uix:TargetApp>
+      </uix:NApplicationCard.TargetApp>
+    </uix:NApplicationCard>
+    <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="593.6,62.4" sap2010:WorkflowViewState.IdRef="WriteLine_3">
+      <InArgument x:TypeArguments="x:String">
+        <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_11">"For that other we click generate invoice: " + doGenerateInvoice.ToString()</CSharpValue>
+      </InArgument>
+    </WriteLine>
+  </Sequence>
+</Activity>

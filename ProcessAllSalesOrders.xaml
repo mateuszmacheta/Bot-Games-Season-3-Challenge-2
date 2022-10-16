@@ -1,0 +1,457 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="ProcessAllSalesOrders" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:sc="clr-namespace:System.Collections;assembly=System.Private.CoreLib" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:str="clr-namespace:System.Text.RegularExpressions;assembly=System.Text.RegularExpressions" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uix="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="dtTrackingNumbers" Type="InOutArgument(sd:DataTable)" />
+    <x:Property Name="salesOrdersURL" Type="InArgument(x:String)" />
+    <x:Property Name="dtOrders" Type="InOutArgument(sd:DataTable)" />
+  </x:Members>
+  <sap2010:ExpressionActivityEditor.ExpressionActivityEditor>C#</sap2010:ExpressionActivityEditor.ExpressionActivityEditor>
+  <sap:VirtualizedContainerService.HintSize>1052.8,3776.8</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <scg:List x:TypeArguments="x:String" Capacity="34">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>UiPath.UIAutomationNext.Enums</x:String>
+      <x:String>UiPath.UIAutomationCore.Contracts</x:String>
+      <x:String>UiPath.UIAutomationNext.Activities</x:String>
+      <x:String>UiPath.Platform.ObjectLibrary</x:String>
+      <x:String>UiPath.Shared.Activities</x:String>
+      <x:String>UiPath.UIAutomationNext.Activities.Models</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>UiPath.Platform.ResourceHandling</x:String>
+      <x:String>System.Security</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+      <x:String>UiPath.UIAutomationNext.Models.ExtractData</x:String>
+      <x:String>UiPath.UIAutomationNext.Contracts</x:String>
+      <x:String>UiPath.DataTableUtilities</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Linq.Expressions</x:String>
+      <x:String>System.Text.RegularExpressions</x:String>
+    </scg:List>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="55">
+      <AssemblyReference>Microsoft.CSharp</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.ServiceModel.Activities</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System.Private.CoreLib</AssemblyReference>
+      <AssemblyReference>System.ObjectModel</AssemblyReference>
+      <AssemblyReference>System.Reflection.DispatchProxy</AssemblyReference>
+      <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
+      <AssemblyReference>NPOI</AssemblyReference>
+      <AssemblyReference>System.Memory.Data</AssemblyReference>
+      <AssemblyReference>System.Console</AssemblyReference>
+      <AssemblyReference>System.Private.Uri</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>System.ComponentModel</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.TypeConverter</AssemblyReference>
+      <AssemblyReference>System.Configuration.ConfigurationManager</AssemblyReference>
+      <AssemblyReference>System.Security.Permissions</AssemblyReference>
+      <AssemblyReference>System.Linq.Expressions</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Platform</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Mail.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Primitives</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.EventBasedAsync</AssemblyReference>
+      <AssemblyReference>System.Text.RegularExpressions</AssemblyReference>
+      <AssemblyReference>System.Runtime.InteropServices</AssemblyReference>
+      <AssemblyReference>System.Private.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Formatters</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Primitives</AssemblyReference>
+      <AssemblyReference>System.Private.DataContractSerialization</AssemblyReference>
+      <AssemblyReference>System.Private.Xml</AssemblyReference>
+      <AssemblyReference>System.Data.Common</AssemblyReference>
+      <AssemblyReference>System.Data.SqlClient</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>System.Collections</AssemblyReference>
+      <AssemblyReference>System.Collections.NonGeneric</AssemblyReference>
+    </scg:List>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="Sequence ProcessAllSalesOrders" sap:VirtualizedContainerService.HintSize="1063.2,3712" sap2010:WorkflowViewState.IdRef="Sequence_9">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="ui:UiElement" Name="chromeSalesOrdersApp" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <Sequence DisplayName="Sequence DEBUG" sap:VirtualizedContainerService.HintSize="1021.6,428" sap2010:WorkflowViewState.IdRef="Sequence_10">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <ui:BuildDataTable sap2010:Annotation.AnnotationText="Build DT with Orders and Statuses" DisplayName="Build Data DEBUG Table dtOrders" sap:VirtualizedContainerService.HintSize="333.6,91.2" sap2010:WorkflowViewState.IdRef="BuildDataTable_1" TableInfo="&lt;NewDataSet&gt;&#xA;  &lt;xs:schema id=&quot;NewDataSet&quot; xmlns=&quot;&quot; xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:msdata=&quot;urn:schemas-microsoft-com:xml-msdata&quot;&gt;&#xA;    &lt;xs:element name=&quot;NewDataSet&quot; msdata:IsDataSet=&quot;true&quot; msdata:MainDataTable=&quot;TableName&quot; msdata:UseCurrentLocale=&quot;true&quot;&gt;&#xA;      &lt;xs:complexType&gt;&#xA;        &lt;xs:choice minOccurs=&quot;0&quot; maxOccurs=&quot;unbounded&quot;&gt;&#xA;          &lt;xs:element name=&quot;TableName&quot;&gt;&#xA;            &lt;xs:complexType&gt;&#xA;              &lt;xs:sequence&gt;&#xA;                &lt;xs:element name=&quot;SO_x0020_Number&quot; msdata:Caption=&quot;&quot; minOccurs=&quot;0&quot;&gt;&#xA;                  &lt;xs:simpleType&gt;&#xA;                    &lt;xs:restriction base=&quot;xs:string&quot;&gt;&#xA;                      &lt;xs:maxLength value=&quot;10&quot; /&gt;&#xA;                    &lt;/xs:restriction&gt;&#xA;                  &lt;/xs:simpleType&gt;&#xA;                &lt;/xs:element&gt;&#xA;                &lt;xs:element name=&quot;Order_x0020_Status&quot; msdata:Caption=&quot;&quot; minOccurs=&quot;0&quot;&gt;&#xA;                  &lt;xs:simpleType&gt;&#xA;                    &lt;xs:restriction base=&quot;xs:string&quot;&gt;&#xA;                      &lt;xs:maxLength value=&quot;20&quot; /&gt;&#xA;                    &lt;/xs:restriction&gt;&#xA;                  &lt;/xs:simpleType&gt;&#xA;                &lt;/xs:element&gt;&#xA;              &lt;/xs:sequence&gt;&#xA;            &lt;/xs:complexType&gt;&#xA;          &lt;/xs:element&gt;&#xA;        &lt;/xs:choice&gt;&#xA;      &lt;/xs:complexType&gt;&#xA;    &lt;/xs:element&gt;&#xA;  &lt;/xs:schema&gt;&#xA;  &lt;TableName&gt;&#xA;    &lt;SO_x0020_Number&gt;text&lt;/SO_x0020_Number&gt;&#xA;  &lt;/TableName&gt;&#xA;&lt;/NewDataSet&gt;">
+        <ui:BuildDataTable.DataTable>
+          <OutArgument x:TypeArguments="sd:DataTable">
+            <CSharpReference x:TypeArguments="sd:DataTable" sap2010:WorkflowViewState.IdRef="CSharpReference`1_21">dtOrders</CSharpReference>
+          </OutArgument>
+        </ui:BuildDataTable.DataTable>
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </ui:BuildDataTable>
+      <ui:BuildDataTable sap2010:Annotation.AnnotationText="Build DT with Tracking Number Statuses and Their parent SO Number" DisplayName="Build Data DEBUG Table Tracking Numbers" sap:VirtualizedContainerService.HintSize="333.6,104" sap2010:WorkflowViewState.IdRef="BuildDataTable_2" TableInfo="&lt;NewDataSet&gt;&#xA;  &lt;xs:schema id=&quot;NewDataSet&quot; xmlns=&quot;&quot; xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:msdata=&quot;urn:schemas-microsoft-com:xml-msdata&quot;&gt;&#xA;    &lt;xs:element name=&quot;NewDataSet&quot; msdata:IsDataSet=&quot;true&quot; msdata:MainDataTable=&quot;TableName&quot; msdata:UseCurrentLocale=&quot;true&quot;&gt;&#xA;      &lt;xs:complexType&gt;&#xA;        &lt;xs:choice minOccurs=&quot;0&quot; maxOccurs=&quot;unbounded&quot;&gt;&#xA;          &lt;xs:element name=&quot;TableName&quot;&gt;&#xA;            &lt;xs:complexType&gt;&#xA;              &lt;xs:sequence&gt;&#xA;                &lt;xs:element name=&quot;Tracking_x0020_Number&quot; msdata:Caption=&quot;&quot; minOccurs=&quot;0&quot;&gt;&#xA;                  &lt;xs:simpleType&gt;&#xA;                    &lt;xs:restriction base=&quot;xs:string&quot;&gt;&#xA;                      &lt;xs:maxLength value=&quot;20&quot; /&gt;&#xA;                    &lt;/xs:restriction&gt;&#xA;                  &lt;/xs:simpleType&gt;&#xA;                &lt;/xs:element&gt;&#xA;                &lt;xs:element name=&quot;Status&quot; msdata:Caption=&quot;&quot; minOccurs=&quot;0&quot;&gt;&#xA;                  &lt;xs:simpleType&gt;&#xA;                    &lt;xs:restriction base=&quot;xs:string&quot;&gt;&#xA;                      &lt;xs:maxLength value=&quot;20&quot; /&gt;&#xA;                    &lt;/xs:restriction&gt;&#xA;                  &lt;/xs:simpleType&gt;&#xA;                &lt;/xs:element&gt;&#xA;                &lt;xs:element name=&quot;SO_x0020_Number&quot; msdata:Caption=&quot;&quot; minOccurs=&quot;0&quot;&gt;&#xA;                  &lt;xs:simpleType&gt;&#xA;                    &lt;xs:restriction base=&quot;xs:string&quot;&gt;&#xA;                      &lt;xs:maxLength value=&quot;10&quot; /&gt;&#xA;                    &lt;/xs:restriction&gt;&#xA;                  &lt;/xs:simpleType&gt;&#xA;                &lt;/xs:element&gt;&#xA;              &lt;/xs:sequence&gt;&#xA;            &lt;/xs:complexType&gt;&#xA;          &lt;/xs:element&gt;&#xA;        &lt;/xs:choice&gt;&#xA;      &lt;/xs:complexType&gt;&#xA;    &lt;/xs:element&gt;&#xA;  &lt;/xs:schema&gt;&#xA;  &lt;TableName&gt;&#xA;    &lt;SO_x0020_Number&gt;text&lt;/SO_x0020_Number&gt;&#xA;  &lt;/TableName&gt;&#xA;&lt;/NewDataSet&gt;">
+        <ui:BuildDataTable.DataTable>
+          <OutArgument x:TypeArguments="sd:DataTable">
+            <CSharpReference x:TypeArguments="sd:DataTable" sap2010:WorkflowViewState.IdRef="CSharpReference`1_22">dtTrackingNumbers</CSharpReference>
+          </OutArgument>
+        </ui:BuildDataTable.DataTable>
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </ui:BuildDataTable>
+      <Assign sap:VirtualizedContainerService.HintSize="333.6,60" sap2010:WorkflowViewState.IdRef="Assign_2">
+        <Assign.To>
+          <OutArgument x:TypeArguments="x:String">
+            <CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_23">salesOrdersURL</CSharpReference>
+          </OutArgument>
+        </Assign.To>
+        <Assign.Value>
+          <InArgument x:TypeArguments="x:String">https://developer.automationanywhere.com/challenges/salesorder-applist.html</InArgument>
+        </Assign.Value>
+      </Assign>
+    </Sequence>
+    <uix:NApplicationCard WebDriverMode="{x:Null}" AttachMode="ByInstance" DisplayName="Use Browser Chrome: Sales Order - List" sap:VirtualizedContainerService.HintSize="1021.6,3048.8" sap2010:WorkflowViewState.IdRef="NApplicationCard_4" InteractionMode="DebuggerApi" ScopeGuid="835aa057-8c3c-4551-b090-7ae91c3f3779" Version="V2">
+      <uix:NApplicationCard.Body>
+        <ActivityAction x:TypeArguments="x:Object">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
+          </ActivityAction.Argument>
+          <ui:ForEach x:TypeArguments="x:Object" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="988,2832" sap2010:WorkflowViewState.IdRef="ForEach`1_6">
+            <ui:ForEach.Body>
+              <ActivityAction x:TypeArguments="x:Object">
+                <ActivityAction.Argument>
+                  <DelegateInArgument x:TypeArguments="x:Object" Name="pageNumber" />
+                </ActivityAction.Argument>
+                <Sequence DisplayName="Body One Page" sap:VirtualizedContainerService.HintSize="952.8,2705.6" sap2010:WorkflowViewState.IdRef="Sequence_4">
+                  <Sequence.Variables>
+                    <Variable x:TypeArguments="sd:DataTable" Name="dtOrderChunk" />
+                    <Variable x:TypeArguments="sd:DataTable" Name="dtTrackingNumbersChunk" />
+                  </Sequence.Variables>
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <Assign sap2010:Annotation.AnnotationText="Copy schema of Tracking Numbers DT" DisplayName="Assign Tracking Numbers Chunk" sap:VirtualizedContainerService.HintSize="911.2,92.8" sap2010:WorkflowViewState.IdRef="Assign_1">
+                    <Assign.To>
+                      <OutArgument x:TypeArguments="sd:DataTable">
+                        <CSharpReference x:TypeArguments="sd:DataTable" sap2010:WorkflowViewState.IdRef="CSharpReference`1_19">dtTrackingNumbersChunk</CSharpReference>
+                      </OutArgument>
+                    </Assign.To>
+                    <Assign.Value>
+                      <InArgument x:TypeArguments="sd:DataTable">
+                        <CSharpValue x:TypeArguments="sd:DataTable" sap2010:WorkflowViewState.IdRef="CSharpValue`1_28">dtTrackingNumbers.Clone()</CSharpValue>
+                      </InArgument>
+                    </Assign.Value>
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                  </Assign>
+                  <uix:NClick ClickType="Single" DisplayName="Click Click on Link For Current Page" sap:VirtualizedContainerService.HintSize="911.2,157.6" sap2010:WorkflowViewState.IdRef="NClick_1" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="835aa057-8c3c-4551-b090-7ae91c3f3779" Version="V1">
+                    <uix:NClick.Target>
+                      <uix:TargetAnchorable BrowserURL="https://developer.automationanywhere.com/challenges/salesorder-applist.html" DesignTimeRectangle="1462, 839, 42, 48" ElementType="Text" FriendlyName="'1'" FuzzySelectorArgument="&lt;webctrl parentid='salesOrderDataTable_paginate' tag='A' type='' class='page-link' check:innerText='1' /&gt;" Guid="1cef314b-f563-41de-9d3e-5cbceccc8395" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAC4AAAA0CAYAAAD19ArKAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAADxSURBVGhD7Zo7CsJQEEWzQnfhClyBW3AL1lbBxlawdwEhEAsLIUWMRX6Ovgc3ISQWYjI4cA8ceOQzHIaUCcQoDNcmiOKbOBer2ITobTc+9tA/ChiuJWC4loDhWgKGawkYriVguJaA4VqCWcLXx0JyP7WUw8j9XwSTh3fRDiPhbXTVSF65g4XwTSaRi21qOYe5JH6qkY0vd5nsw8v7fLcV3snwgYDhfRk+EDC8r6nwVE7XUhJvLYWf+pS0vfaQ7eh73wkmDMeWPzHN9sFMn8p8AoZrCRiuJWC4loDhWgKGawkYriVguJaA4VoC+7992ELkBdU6wbr0zvEdAAAAAElFTkSuQmCC" InformativeScreenshot="fa7f955dd4cda2dbe231e68684ee334a.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Sales Order - List' /&gt;" SearchSteps="Selector" Visibility="Interactive">
+                        <uix:TargetAnchorable.FullSelectorArgument>
+                          <InArgument x:TypeArguments="x:String">
+                            <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_33">String.Format("&lt;webctrl parentid='salesOrderDataTable_paginate' tag='A' aaname='{0}' /&gt;", pageNumber)</CSharpValue>
+                          </InArgument>
+                        </uix:TargetAnchorable.FullSelectorArgument>
+                      </uix:TargetAnchorable>
+                    </uix:NClick.Target>
+                  </uix:NClick>
+                  <uix:NExtractData AppendResults="False" ContinueOnError="True" DisplayName="Extract Table Data Orders Table" ExtractDataSettings="&lt;Table xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xmlns:xsd='http://www.w3.org/2001/XMLSchema' Type='Structured'&gt;&#xA;&#x9;&lt;Column xsi:type='DataColumn' Name='SO Number' ReferenceName='Column0'&gt;&#xA;&#x9;&#x9;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xA;&#x9;&lt;/Column&gt;&#xA;&#x9;&lt;Column xsi:type='DataColumn' Name='Order Status' ReferenceName='Column1'&gt;&#xA;&#x9;&#x9;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xA;&#x9;&lt;/Column&gt;&#xA;&lt;/Table&gt;" ExtractMetadata="&lt;extract&gt;&lt;row exact='1'&gt;&lt;webctrl tag='tr' /&gt;&lt;/row&gt;&lt;column exact='1' name='Column0' attr='text'&gt;&lt;webctrl tag='tr' /&gt;&lt;webctrl tag='td' idx='2' /&gt;&lt;/column&gt;&lt;column exact='1' name='Column1' attr='text'&gt;&lt;webctrl tag='tr' /&gt;&lt;webctrl tag='td' idx='5' /&gt;&lt;/column&gt;&lt;/extract&gt;" sap:VirtualizedContainerService.HintSize="911.2,157.6" sap2010:WorkflowViewState.IdRef="NExtractData_1" LimitExtractionTo="Rows" MaximumResults="0" ScopeIdentifier="835aa057-8c3c-4551-b090-7ae91c3f3779" Version="V1">
+                    <uix:NExtractData.DataTable>
+                      <InOutArgument x:TypeArguments="sd:DataTable">
+                        <CSharpReference x:TypeArguments="sd:DataTable" sap2010:WorkflowViewState.IdRef="CSharpReference`1_16">dtOrderChunk</CSharpReference>
+                      </InOutArgument>
+                    </uix:NExtractData.DataTable>
+                    <uix:NExtractData.Target>
+                      <uix:TargetAnchorable DesignTimeRectangle="345, 340, 1507, 650" FriendlyName="'SO-10153Jorry Aronoff03…'" FullSelectorArgument="&lt;webctrl tag='TABLE' /&gt;&lt;webctrl tag='TBODY' /&gt;" Guid="58a744ee-b212-43c9-8c1f-7222c2750bfd" InformativeScreenshot="4220c46a1801c0b52cc634546552878e.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Sales Order - List' /&gt;" SearchSteps="Selector" Visibility="Interactive" />
+                    </uix:NExtractData.Target>
+                  </uix:NExtractData>
+                  <ui:MergeDataTable DisplayName="Merge Data Table DEBUG" sap:VirtualizedContainerService.HintSize="911.2,134.4" sap2010:WorkflowViewState.IdRef="MergeDataTable_1" MissingSchemaAction="Add">
+                    <ui:MergeDataTable.Destination>
+                      <InOutArgument x:TypeArguments="sd:DataTable">
+                        <CSharpReference x:TypeArguments="sd:DataTable" sap2010:WorkflowViewState.IdRef="CSharpReference`1_18">dtOrders</CSharpReference>
+                      </InOutArgument>
+                    </ui:MergeDataTable.Destination>
+                    <ui:MergeDataTable.Source>
+                      <InArgument x:TypeArguments="sd:DataTable">
+                        <CSharpValue x:TypeArguments="sd:DataTable" sap2010:WorkflowViewState.IdRef="CSharpValue`1_25">dtOrderChunk</CSharpValue>
+                      </InArgument>
+                    </ui:MergeDataTable.Source>
+                  </ui:MergeDataTable>
+                  <ui:FilterDataTable sap2010:Annotation.AnnotationText="each order with a status of “Confirmed” or “Delivery Outstanding” " DisplayName="Filter Data Table Get Relevant Statuses" FilterRowsMode="Keep" sap:VirtualizedContainerService.HintSize="911.2,193.6" sap2010:WorkflowViewState.IdRef="FilterDataTable_1" SelectColumnsMode="Keep">
+                    <ui:FilterDataTable.DataTable>
+                      <InArgument x:TypeArguments="sd:DataTable">
+                        <CSharpValue x:TypeArguments="sd:DataTable" sap2010:WorkflowViewState.IdRef="CSharpValue`1_18">dtOrderChunk</CSharpValue>
+                      </InArgument>
+                    </ui:FilterDataTable.DataTable>
+                    <ui:FilterDataTable.Filters>
+                      <scg:List x:TypeArguments="ui:FilterOperationArgument" Capacity="4">
+                        <ui:FilterOperationArgument BooleanOperator="And" Operator="EQ">
+                          <ui:FilterOperationArgument.Column>
+                            <InArgument x:TypeArguments="x:String">
+                              <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_19">"Order Status"</CSharpValue>
+                            </InArgument>
+                          </ui:FilterOperationArgument.Column>
+                          <ui:FilterOperationArgument.Operand>
+                            <InArgument x:TypeArguments="x:String">
+                              <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_20">"Confirmed"</CSharpValue>
+                            </InArgument>
+                          </ui:FilterOperationArgument.Operand>
+                        </ui:FilterOperationArgument>
+                        <ui:FilterOperationArgument BooleanOperator="Or" Operator="EQ">
+                          <ui:FilterOperationArgument.Column>
+                            <InArgument x:TypeArguments="x:String">
+                              <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_21">"Order Status"</CSharpValue>
+                            </InArgument>
+                          </ui:FilterOperationArgument.Column>
+                          <ui:FilterOperationArgument.Operand>
+                            <InArgument x:TypeArguments="x:String">
+                              <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_22">"Delivery Outstanding"</CSharpValue>
+                            </InArgument>
+                          </ui:FilterOperationArgument.Operand>
+                        </ui:FilterOperationArgument>
+                      </scg:List>
+                    </ui:FilterDataTable.Filters>
+                    <ui:FilterDataTable.OutputDataTable>
+                      <OutArgument x:TypeArguments="sd:DataTable">
+                        <CSharpReference x:TypeArguments="sd:DataTable" sap2010:WorkflowViewState.IdRef="CSharpReference`1_17">dtOrderChunk</CSharpReference>
+                      </OutArgument>
+                    </ui:FilterDataTable.OutputDataTable>
+                    <ui:FilterDataTable.SelectColumns>
+                      <scg:List x:TypeArguments="InArgument" Capacity="4">
+                        <InArgument x:TypeArguments="x:String">
+                          <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_23">"SO Number"</CSharpValue>
+                        </InArgument>
+                        <InArgument x:TypeArguments="x:String">
+                          <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_24">"Order Status"</CSharpValue>
+                        </InArgument>
+                      </scg:List>
+                    </ui:FilterDataTable.SelectColumns>
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                  </ui:FilterDataTable>
+                  <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DisplayName="For Each Row in Sales Orders DT" sap:VirtualizedContainerService.HintSize="911.2,1675.2" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
+                    <ui:ForEachRow.Body>
+                      <ActivityAction x:TypeArguments="sd:DataRow">
+                        <ActivityAction.Argument>
+                          <DelegateInArgument x:TypeArguments="sd:DataRow" Name="soRow" />
+                        </ActivityAction.Argument>
+                        <Sequence DisplayName="Body Each Sales Order with Proper Status" sap:VirtualizedContainerService.HintSize="877.6,1557.6" sap2010:WorkflowViewState.IdRef="Sequence_6">
+                          <Sequence.Variables>
+                            <Variable x:TypeArguments="x:Boolean" Name="doGenerateInvoice" />
+                          </Sequence.Variables>
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                          <Sequence DisplayName="Sequence Get Tracking Ref Numbers" sap:VirtualizedContainerService.HintSize="836,1463.2" sap2010:WorkflowViewState.IdRef="Sequence_7">
+                            <Sequence.Variables>
+                              <Variable x:TypeArguments="x:String" Default="SO-10144" Name="soNumber" />
+                              <Variable x:TypeArguments="sd:DataTable" Name="ExtractDataTable">
+                                <Variable.Default>
+                                  <CSharpValue x:TypeArguments="sd:DataTable" sap2010:WorkflowViewState.IdRef="CSharpValue`1_41">new System.Data.DataTable();</CSharpValue>
+                                </Variable.Default>
+                              </Variable>
+                              <Variable x:TypeArguments="x:String" Name="itemsString" />
+                              <Variable x:TypeArguments="scg:IEnumerable(str:Match)" Name="trackingNumberMatches" />
+                            </Sequence.Variables>
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                            <Assign DisplayName="Assign soNumber" sap:VirtualizedContainerService.HintSize="794.4,61.6" sap2010:WorkflowViewState.IdRef="Assign_3">
+                              <Assign.To>
+                                <OutArgument x:TypeArguments="x:String">
+                                  <CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_24">soNumber</CSharpReference>
+                                </OutArgument>
+                              </Assign.To>
+                              <Assign.Value>
+                                <InArgument x:TypeArguments="x:String">
+                                  <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_36">soRow["SO Number"].ToString()</CSharpValue>
+                                </InArgument>
+                              </Assign.Value>
+                            </Assign>
+                            <Assign DisplayName="Assign doGenerateInvoice" sap:VirtualizedContainerService.HintSize="794.4,61.6" sap2010:WorkflowViewState.IdRef="Assign_4">
+                              <Assign.To>
+                                <OutArgument x:TypeArguments="x:Boolean">
+                                  <CSharpReference x:TypeArguments="x:Boolean" sap2010:WorkflowViewState.IdRef="CSharpReference`1_28">doGenerateInvoice</CSharpReference>
+                                </OutArgument>
+                              </Assign.To>
+                              <Assign.Value>
+                                <InArgument x:TypeArguments="x:Boolean">False</InArgument>
+                              </Assign.Value>
+                            </Assign>
+                            <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="794.4,62.4" sap2010:WorkflowViewState.IdRef="WriteLine_1">
+                              <InArgument x:TypeArguments="x:String">
+                                <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_38">"Expanding Items for SO Number " + soNumber</CSharpValue>
+                              </InArgument>
+                            </WriteLine>
+                            <uix:NClick ClickType="Single" DisplayName="Click Expand Items" sap:VirtualizedContainerService.HintSize="794.4,157.6" sap2010:WorkflowViewState.IdRef="NClick_2" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="835aa057-8c3c-4551-b090-7ae91c3f3779" Version="V1">
+                              <uix:NClick.Target>
+                                <uix:TargetAnchorable BrowserURL="https://developer.automationanywhere.com/challenges/salesorder-applist.html" DesignTimeRectangle="354, 477, 33, 38" FriendlyName="'I'" FuzzySelectorArgument="&lt;webctrl tag='TABLE' /&gt;&lt;webctrl tag='I' parentclass=' dt-control' type='' class='fas fa-square-plus i-SO-10144' aaname='' /&gt;" Guid="c2476517-696b-43cc-8eca-dfd8657bc25c" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAACUAAAAqCAYAAAA0yJLWAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAGPSURBVFhH7dhfa4JQHMbxvfkxBJmM6M+aI4zBghO1CLoQJBYSQlDgRgOhCFay8KI4b+CZlTR1Z3Qsc2548bny5/FLKhy7oJQibbIoXn8jav7WB7mrQJTk8ysRNPUZVqEGX9QS5lMVl1eF5JW6sNaMKGfQgsg6ISEieQ1H2VDL7OHECA0Y3q/lRQ2hsAYTVUHbSl1UAYqRRfGJNyrXQLvbAynL7OOc4osSCJ6d3WKUvkMtMWY4xReV1zDZrrFjPDBmOGVRvLIoXtGjChrG+7csorWNUf3wDiRylNL3XeQYix6KjHX9IkdJLSt4kajMzsGt0RHPlIziowZNH0D3G0zg+C4+fwkdd6ktgpzAWjPonzzoP8mieKUyKqfBSl2U+1Yqur39dltN+7gXWTN8YoyKTxbFK4VRt6gNA1EWmhJrMElVdGaBKAqzftqXyMluVIy9ln0U/XBv4TVjOAmCDOLdumDUxsIEyTNOOiephra5/GpwBaM8jj3BKLT9iN8Q5nT57Q+zDWbUb8uieKUwiuITwjuWRystzjYAAAAASUVORK5CYII=" InformativeScreenshot="0ed883bcd3c6d91528d14e45afcdbad9.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Sales Order - List' /&gt;" SearchSteps="Selector" Visibility="Interactive">
+                                  <uix:TargetAnchorable.FullSelectorArgument>
+                                    <InArgument x:TypeArguments="x:String">
+                                      <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_40">String.Format("&lt;webctrl aria-role='row' parentid='salesOrderDataTable' tag='TR' innertext='{0}*' /&gt;&lt;webctrl tag='I' parentclass=' dt-control' tableCol='1' /&gt;", soNumber)</CSharpValue>
+                                    </InArgument>
+                                  </uix:TargetAnchorable.FullSelectorArgument>
+                                </uix:TargetAnchorable>
+                              </uix:NClick.Target>
+                            </uix:NClick>
+                            <uix:NGetText DisplayName="Get Text Items Table" sap:VirtualizedContainerService.HintSize="794.4,157.6" sap2010:WorkflowViewState.IdRef="NGetText_1" ScopeIdentifier="835aa057-8c3c-4551-b090-7ae91c3f3779" Version="V1">
+                              <uix:NGetText.Target>
+                                <uix:TargetAnchorable BrowserURL="https://developer.automationanywhere.com/challenges/salesorder-applist.html" DesignTimeRectangle="575, 334, 283, 61" ElementType="Text" FriendlyName="'Paule Sparry'" FuzzySelectorArgument="&lt;webctrl tag='TABLE' /&gt;&lt;webctrl isleaf='1' type='' class='' tag='TD' /&gt;" Guid="df813448-71bf-4e39-a5a1-3f8f72ee8bf2" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Sales Order - List' /&gt;" SearchSteps="Selector" Visibility="Interactive">
+                                  <uix:TargetAnchorable.Anchors>
+                                    <scg:List x:TypeArguments="uix:ITarget" Capacity="0" />
+                                  </uix:TargetAnchorable.Anchors>
+                                  <uix:TargetAnchorable.FullSelectorArgument>
+                                    <InArgument x:TypeArguments="x:String">
+                                      <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_44">String.Format("&lt;webctrl tag='TABLE' class='sales-order-items t-{0}' /&gt;", soNumber)</CSharpValue>
+                                    </InArgument>
+                                  </uix:TargetAnchorable.FullSelectorArgument>
+                                </uix:TargetAnchorable>
+                              </uix:NGetText.Target>
+                              <uix:NGetText.Text>
+                                <OutArgument x:TypeArguments="x:String">
+                                  <CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_26">itemsString</CSharpReference>
+                                </OutArgument>
+                              </uix:NGetText.Text>
+                            </uix:NGetText>
+                            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke LookupTrackingNumbers workflow" sap:VirtualizedContainerService.HintSize="794.4,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="LookupTrackingNumbers.xaml">
+                              <ui:InvokeWorkflowFile.Arguments>
+                                <OutArgument x:TypeArguments="x:Boolean" x:Key="doGenerateInvoice">
+                                  <CSharpReference x:TypeArguments="x:Boolean" sap2010:WorkflowViewState.IdRef="CSharpReference`1_29">doGenerateInvoice</CSharpReference>
+                                </OutArgument>
+                                <InArgument x:TypeArguments="x:String" x:Key="itemsString">
+                                  <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_45">itemsString</CSharpValue>
+                                </InArgument>
+                              </ui:InvokeWorkflowFile.Arguments>
+                            </ui:InvokeWorkflowFile>
+                            <If DisplayName="If We need to generate invoice" sap:VirtualizedContainerService.HintSize="794.4,515.2" sap2010:WorkflowViewState.IdRef="If_1">
+                              <If.Condition>
+                                <InArgument x:TypeArguments="x:Boolean">
+                                  <CSharpValue x:TypeArguments="x:Boolean" sap2010:WorkflowViewState.IdRef="CSharpValue`1_46">doGenerateInvoice</CSharpValue>
+                                </InArgument>
+                              </If.Condition>
+                              <If.Then>
+                                <Sequence DisplayName="Sequence Do Press" sap:VirtualizedContainerService.HintSize="375.2,354.4" sap2010:WorkflowViewState.IdRef="Sequence_11">
+                                  <sap:WorkflowViewStateService.ViewState>
+                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                    </scg:Dictionary>
+                                  </sap:WorkflowViewStateService.ViewState>
+                                  <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="333.6,62.4" sap2010:WorkflowViewState.IdRef="WriteLine_4" Text="Pressing generate invoice" />
+                                  <uix:NClick ClickType="Single" DisplayName="Click 'Generate Invoice'" sap:VirtualizedContainerService.HintSize="333.6,157.6" sap2010:WorkflowViewState.IdRef="NClick_4" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="835aa057-8c3c-4551-b090-7ae91c3f3779" Version="V1">
+                                    <uix:NClick.Target>
+                                      <uix:TargetAnchorable BrowserURL="https://developer.automationanywhere.com/challenges/salesorder-applist.html" DesignTimeRectangle="375, 805, 191, 48" ElementType="Button" FriendlyName="'Generate Invoice'" FullSelectorArgument="&lt;webctrl tag='TABLE' parentid='salesOrderDataTable' /&gt;&lt;webctrl tag='BUTTON' innertext='Generate Invoice' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='TABLE' /&gt;&lt;webctrl type='button' tag='BUTTON' class='btn btn-primary mr-3' aaname='Generate Invoice' check:innerText='Generate Invoice' /&gt;" Guid="a707a143-9b11-4074-82c3-835341f90282" ImageBase64="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" InformativeScreenshot="8d2b2f2ba61b9b8d3811b03cd0f320c4.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Sales Order - List' /&gt;" SearchSteps="Selector" Visibility="Interactive" />
+                                    </uix:NClick.Target>
+                                  </uix:NClick>
+                                </Sequence>
+                              </If.Then>
+                              <If.Else>
+                                <Sequence sap:VirtualizedContainerService.HintSize="375.2,354.4" sap2010:WorkflowViewState.IdRef="Sequence_12">
+                                  <sap:WorkflowViewStateService.ViewState>
+                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                    </scg:Dictionary>
+                                  </sap:WorkflowViewStateService.ViewState>
+                                  <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="333.6,62.4" sap2010:WorkflowViewState.IdRef="WriteLine_5" Text="Pressing close" />
+                                  <uix:NClick ClickType="Single" DisplayName="Click 'Close'" sap:VirtualizedContainerService.HintSize="333.6,157.6" sap2010:WorkflowViewState.IdRef="NClick_3" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="835aa057-8c3c-4551-b090-7ae91c3f3779" Version="V1">
+                                    <uix:NClick.Target>
+                                      <uix:TargetAnchorable BrowserURL="https://developer.automationanywhere.com/challenges/salesorder-applist.html" DesignTimeRectangle="586, 680, 85, 48" ElementType="Button" FriendlyName="'Close'" FullSelectorArgument="&lt;webctrl tag='TABLE' parentid='salesOrderDataTable' /&gt;&lt;webctrl aaname='Close' tag='BUTTON' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='TABLE' /&gt;&lt;webctrl aaname='Close' type='button' tag='BUTTON' check:innerText='Close' /&gt;" Guid="76a01033-64e4-4559-a569-b78f77ea0dba" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAFkAAAA0CAYAAADhYZQrAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAAQ2SURBVHhe7Ztda9tIFIb3v2e7F9telFXXsATSC0NDA8t6NwXTmMQNJnVKAqYOJCZOapMauUTGTuIIpSjh9BxpxhpLI+MPaaDsGXguMhop9jNHr0aG+cW2bWDyhSUbgCUbQCv5vH0B//63Ay//eA2//vYnrD17xaRAfsgT+SJvOp8JydUPH4MTn79Yx4uQYGYeyBd5I39xp1OSacDvz//SXoSZD/IXFz2RTKUeRgOzKuRRjY6JZMoUjohsII/kMyGZwlt3ArMc5DMhmaMiW8hnQnK4JNGfwCzDK5acPyzZACzZACzZACzZACzZACzZACzZACYkF3ag1nJg7D2C2nzPBeeiCdsb6vgD6Hh09AE6FbX/ZyZnydZuF0Z+4DRovnsLzvUQRq4i/OkB+kfvxDkseSGs3R4EvrCNr+IVi2zsYYUPwUPJnd2i6GfJCyBlAXjdA7C0Y0KsghRMsOS5sY6cQDB870NVczydWZLfQrnRA0eNGv8BxvYl1ErqRIVs1ruJsU63CeXC9Lj19+fQv3sQg7DhnTW2z6Ecv/OWJifJ9W/h56Uq1h1PJ0VyYR/OhpEw726I2X4Lnsz7Jxe+1mWuI5UoqnwaO3AxluivR/haiyZk8/MQ5CUS1/T6UItNyHLkJLkxCD+n81l/PB2d5CLUekKw24f6VNVidbduQ1FPt3CyFfZXumFl+nZDiaq3UP10DEX593YXxjTI7UF1qmpx3FV4/vhiT+lflp9BcuEUwvBxob2tjpUU4Sh251hYoUFLTErEZCLuqYJj3Ij4uLmMJmVpcpIsK8/vHWuPp6ORLG99rweVxHiBlDo4FX3v4MiOcpYio9PYh3XlHFkIM9vwfOZDez5ykrz2STz4fAfqC+VaVpJD1reP4cx2wQ/yGNs9VraIFCl51NRXenbkJZlkueGX8K4OpyoojlXag38mE7FaXKRmKK7JTwbi7sKcpr7yF1HpODGrR8IscpOMVPDBIirIu9YsiQolqDTpZQS/OH7RzaB/B9r3dAatAuTY4iQ/Zz74/CE03oj+rVPoXOBDTrmLNlti1mW1b13CKOh4hFFrOkrWNvbhxO5H11uJPCUjVhm/iFwSYZOv1Q6uSye3MK5Lneb+JPuqV2Ilgf2j1mF4rcIOnFzPXsJFb41/R3n79AjejfIgQ6FOoyTGoXhczwc3DjVacw/Czyab92XRJaiOnCUHBD8Q9ad/r8AW/EDUPU1W+MYhtG/E2KmMTX8ZqYqcnaD7UQr/X1+ZTIlVakB7oEw6Nu/OgbODvZkxNz8mJP/vYckGYMkGYMkGYMkGYMkGYMkGYMkGYMkGYMkGYMkG0Ejm7QzZot3OwBtzskW7MYe3mGVH6hYz3iyZHeRRu1mS4G2/qzNz26+EBtBMcHQsBvkib3HBREIyQaVOmULhHUYILe8YHeSHPJEvNSJUtJKZLLHhB2DjFwb2C3+kAAAAAElFTkSuQmCC" InformativeScreenshot="ed0cf1f61bf412d9f43e18c051f71603.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Sales Order - List' /&gt;" SearchSteps="Selector" Visibility="Interactive" />
+                                    </uix:NClick.Target>
+                                  </uix:NClick>
+                                </Sequence>
+                              </If.Else>
+                            </If>
+                          </Sequence>
+                        </Sequence>
+                      </ActivityAction>
+                    </ui:ForEachRow.Body>
+                    <ui:ForEachRow.DataTable>
+                      <InArgument x:TypeArguments="sd:DataTable">
+                        <CSharpValue x:TypeArguments="sd:DataTable" sap2010:WorkflowViewState.IdRef="CSharpValue`1_29">dtOrderChunk</CSharpValue>
+                      </InArgument>
+                    </ui:ForEachRow.DataTable>
+                  </ui:ForEachRow>
+                </Sequence>
+              </ActivityAction>
+            </ui:ForEach.Body>
+            <ui:ForEach.Values>
+              <InArgument x:TypeArguments="sc:IEnumerable">
+                <CSharpValue x:TypeArguments="sc:IEnumerable" sap2010:WorkflowViewState.IdRef="CSharpValue`1_35">Enumerable.Range(1, 2)</CSharpValue>
+              </InArgument>
+            </ui:ForEach.Values>
+          </ui:ForEach>
+        </ActivityAction>
+      </uix:NApplicationCard.Body>
+      <uix:NApplicationCard.OutUiElement>
+        <OutArgument x:TypeArguments="ui:UiElement">
+          <CSharpReference x:TypeArguments="ui:UiElement" sap2010:WorkflowViewState.IdRef="CSharpReference`1_20">chromeSalesOrdersApp</CSharpReference>
+        </OutArgument>
+      </uix:NApplicationCard.OutUiElement>
+      <uix:NApplicationCard.TargetApp>
+        <uix:TargetApp Area="960, 1071, 1938, 1048" BrowserType="Chrome" IconBase64="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" InformativeScreenshot="9cc9da1197e14dc578f6281f02ecf5c2.png" Selector="&lt;html app='chrome.exe' title='Sales Order - List' /&gt;">
+          <uix:TargetApp.Url>
+            <InArgument x:TypeArguments="x:String">
+              <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_30">salesOrdersURL</CSharpValue>
+            </InArgument>
+          </uix:TargetApp.Url>
+        </uix:TargetApp>
+      </uix:NApplicationCard.TargetApp>
+    </uix:NApplicationCard>
+    <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="1021.6,62.4" sap2010:WorkflowViewState.IdRef="WriteLine_2" Text="Finished all orders" />
+  </Sequence>
+</Activity>
