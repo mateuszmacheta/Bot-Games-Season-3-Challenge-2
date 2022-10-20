@@ -195,7 +195,7 @@
         </OutArgument>
       </ui:Matches.Result>
     </ui:Matches>
-    <uix:NApplicationCard WebDriverMode="{x:Null}" AttachMode="ByInstance" CloseMode="Never" DisplayName="Use Browser Chrome: Sales Order - Tracking" sap:VirtualizedContainerService.HintSize="593.6,1856.8" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InteractionMode="DebuggerApi" ScopeGuid="e7ece480-78ec-4c51-9307-cf0432dab86c" Version="V2">
+    <uix:NApplicationCard AttachMode="ByInstance" CloseMode="Never" DisplayName="Use Browser Chrome: Sales Order - Tracking" sap:VirtualizedContainerService.HintSize="593.6,1856.8" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InteractionMode="DebuggerApi" ScopeGuid="e7ece480-78ec-4c51-9307-cf0432dab86c" Version="V2" WebDriverMode="Headless">
       <uix:NApplicationCard.Body>
         <ActivityAction x:TypeArguments="x:Object">
           <ActivityAction.Argument>

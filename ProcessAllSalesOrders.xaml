@@ -5,7 +5,7 @@
     <x:Property Name="dtOrders" Type="InOutArgument(sd:DataTable)" />
   </x:Members>
   <sap2010:ExpressionActivityEditor.ExpressionActivityEditor>C#</sap2010:ExpressionActivityEditor.ExpressionActivityEditor>
-  <sap:VirtualizedContainerService.HintSize>1052.8,3776.8</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1052.8,3816.8</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="34">
@@ -104,7 +104,7 @@
       <AssemblyReference>System.Collections.NonGeneric</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Sequence ProcessAllSalesOrders" sap:VirtualizedContainerService.HintSize="1063.2,3712" sap2010:WorkflowViewState.IdRef="Sequence_9">
+  <Sequence DisplayName="Sequence ProcessAllSalesOrders" sap:VirtualizedContainerService.HintSize="1063.2,3752" sap2010:WorkflowViewState.IdRef="Sequence_9">
     <Sequence.Variables>
       <Variable x:TypeArguments="ui:UiElement" Name="chromeSalesOrdersApp" />
     </Sequence.Variables>
@@ -154,7 +154,7 @@
         </Assign.Value>
       </Assign>
     </Sequence>
-    <uix:NApplicationCard WebDriverMode="{x:Null}" AttachMode="ByInstance" DisplayName="Use Browser Chrome: Sales Order - List" sap:VirtualizedContainerService.HintSize="1021.6,3048.8" sap2010:WorkflowViewState.IdRef="NApplicationCard_4" InteractionMode="DebuggerApi" ScopeGuid="835aa057-8c3c-4551-b090-7ae91c3f3779" Version="V2">
+    <uix:NApplicationCard AttachMode="ByInstance" DisplayName="Use Browser Chrome: Sales Order - List" sap:VirtualizedContainerService.HintSize="1021.6,3088.8" sap2010:WorkflowViewState.IdRef="NApplicationCard_4" InteractionMode="DebuggerApi" ScopeGuid="835aa057-8c3c-4551-b090-7ae91c3f3779" Version="V2" WebDriverMode="Headless">
       <uix:NApplicationCard.Body>
         <ActivityAction x:TypeArguments="x:Object">
           <ActivityAction.Argument>
